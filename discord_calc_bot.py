@@ -8,26 +8,29 @@ from math import sqrt, sin, cos, tan
 from math import asin as arcsin, acos as arccos, atan as arctan
 from math import pi, e, degrees as deg, radians as rad, log
 
+PREFIX = "#"
 
-bot = commands.Bot(command_prefix = '#')
+bot = commands.Bot(command_prefix = PREFIX)
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(status=discord.Status.online, 
+        activity=discord.Game(PREFIX + 'info for help'))
     print('Ready')
 
 @bot.event
 async def on_message(message):
-    if message.content.startswith("#help"):
+    if message.content.startswith(PREFIX + "help"):
         await message.channel.send(help())
 
-    if message.content.startswith("#calc"):
+    if message.content.startswith(PREFIX + "calc"):
         try:
             await message.channel.send(evaluate_math(message.content[6:]))
         except:
             await message.channel.send("Check your inputs")
     
         
-    if message.content.startswith ("#quadratic"):
+    if message.content.startswith (PREFIX + "quadratic"):
         try:
             A, B, C = [int(i) for i in message.content[11:].split(", ")]
             await message.channel.send(quadratic(A, B, C))
@@ -35,8 +38,8 @@ async def on_message(message):
             await message.channel.send("Check your inputs")     
 
 def help():
-    return ('To use the simple calculator, type "#calc [question]". \n' +
-    '[question] can include\n' + 
+    return ('To use the simple calculator, type "' + PREFIX + 'calc ' +
+    ' [question]". \n [question] can include\n' + 
     'Operators: +, -, *, /, // (integer division), ' + 
     '** (exponent). \n' +
     'Functions: sin(x), cos(x), tan(x), arcsin(x), arccos(x), ' + 
@@ -45,8 +48,8 @@ def help():
     'Ambiguities: Trig related functions take in radians as input. Use ' +
     'rad(x) to convert to degrees and deg(x) to convert to radians.\n' +
     'log(x) is the logarithm base-e.\n\n' +
-    'To use the quadratic solver, type "#quadratic A, B, C"\n' +
-    'Example: "#quadratic 1, -1, -1"')
+    'To use the quadratic solver, type "' + PREFIX + 'quadratic A, B, C"\n' +
+    'Example: "' + PREFIX + 'quadratic 1, -1, -1"')
 
 def evaluate_math(message):
     answer = round(eval(message), 10)
