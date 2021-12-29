@@ -17,4 +17,4 @@ Some valid commands include:
 #calc log(cos(0))
 #quadratic 1, -1, -1
 ```
-You can use ``#help`` to see more commands.
+You can use ``#help`` in discord to see more commands.
