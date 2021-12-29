@@ -30,7 +30,7 @@ async def on_message(message):
             await message.channel.send("Check your inputs")
     
         
-    if message.content.startswith (PREFIX + "quadratic"):
+    if message.content.startswith(PREFIX + "quadratic"):
         try:
             A, B, C = [int(i) for i in message.content[11:].split(", ")]
             await message.channel.send(quadratic(A, B, C))
