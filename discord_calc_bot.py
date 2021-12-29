@@ -45,7 +45,8 @@ def help():
     'Ambiguities: Trig related functions take in radians as input. Use ' +
     'rad(x) to convert to degrees and deg(x) to convert to radians.\n' +
     'log(x) is the logarithm base-e.\n\n' +
-    'To use the quadratic solver, type "#quadratic A, B, C"')
+    'To use the quadratic solver, type "#quadratic A, B, C"\n' +
+    'Example: "#quadratic 1, -1, -1"')
 
 def evaluate_math(message):
     answer = round(eval(message), 10)
