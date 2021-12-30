@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 import asyncio
 
-import random
-
 from math import sqrt, sin, cos, tan
 from math import asin as arcsin, acos as arccos, atan as arctan
 from math import pi, e, degrees as deg, radians as rad, log
